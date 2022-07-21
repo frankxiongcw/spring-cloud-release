@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.frank.core.dao.base.ChinaTripartiteDetectMapper">
+  <resultMap id="BaseResultMap" type="com.frank.core.entity.ChinaTripartiteDetect">
+    <id column="tripartite_id" jdbcType="BIGINT" property="tripartiteId" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="batch_no" jdbcType="VARCHAR" property="batchNo" />
+    <result column="detect_agency_name" jdbcType="VARCHAR" property="detectAgencyName" />
+    <result column="detect_agency_address" jdbcType="VARCHAR" property="detectAgencyAddress" />
+    <result column="detect_agency_introduction" jdbcType="VARCHAR" property="detectAgencyIntroduction" />
+    <result column="detect_time" jdbcType="TIMESTAMP" property="detectTime" />
+    <result column="detect_attachment" jdbcType="VARCHAR" property="detectAttachment" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="updater" jdbcType="VARCHAR" property="updater" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    tripartite_id, product_id, batch_no, detect_agency_name, detect_agency_address, detect_agency_introduction, 
+    detect_time, detect_attachment, del_flag, create_time, create_by, creator, update_time, 
+    update_by, updater
+  </sql>
+  <select id="selectByExample" parameterType="com.frank.core.entity.ChinaTripartiteDetectExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tb_china_tripartite_detect
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_china_tripartite_detect
+    where tripartite_id = #{tripartiteId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_china_tripartite_detect
+    where tripartite_id = #{tripartiteId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.frank.core.entity.ChinaTripartiteDetectExample">
+    delete from tb_china_tripartite_detect
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyProperty="tripartiteId" parameterType="com.frank.core.entity.ChinaTripartiteDetect" useGeneratedKeys="true">
+    insert into tb_china_tripartite_detect (tripartite_id, product_id, batch_no, 
+      detect_agency_name, detect_agency_address, 
+      detect_agency_introduction, detect_time, 
+      detect_attachment, del_flag, create_time, 
+      create_by, creator, update_time, 
+      update_by, updater)
+    values (#{tripartiteId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{batchNo,jdbcType=VARCHAR}, 
+      #{detectAgencyName,jdbcType=VARCHAR}, #{detectAgencyAddress,jdbcType=VARCHAR}, 
+      #{detectAgencyIntroduction,jdbcType=VARCHAR}, #{detectTime,jdbcType=TIMESTAMP}, 
+      #{detectAttachment,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updater,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyProperty="tripartiteId" parameterType="com.frank.core.entity.ChinaTripartiteDetect" useGeneratedKeys="true">
+    insert into tb_china_tripartite_detect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tripartiteId != null">
+        tripartite_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="batchNo != null">
+        batch_no,
+      </if>
+      <if test="detectAgencyName != null">
+        detect_agency_name,
+      </if>
+      <if test="detectAgencyAddress != null">
+        detect_agency_address,
+      </if>
+      <if test="detectAgencyIntroduction != null">
+        detect_agency_introduction,
+      </if>
+      <if test="detectTime != null">
+        detect_time,
+      </if>
+      <if test="detectAttachment != null">
+        detect_attachment,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updater != null">
+        updater,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tripartiteId != null">
+        #{tripartiteId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="batchNo != null">
+        #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="detectAgencyName != null">
+        #{detectAgencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="detectAgencyAddress != null">
+        #{detectAgencyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="detectAgencyIntroduction != null">
+        #{detectAgencyIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="detectTime != null">
+        #{detectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detectAttachment != null">
+        #{detectAttachment,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updater != null">
+        #{updater,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.frank.core.entity.ChinaTripartiteDetectExample" resultType="java.lang.Long">
+    select count(*) from tb_china_tripartite_detect
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_china_tripartite_detect
+    <set>
+      <if test="record.tripartiteId != null">
+        tripartite_id = #{record.tripartiteId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=BIGINT},
+      </if>
+      <if test="record.batchNo != null">
+        batch_no = #{record.batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detectAgencyName != null">
+        detect_agency_name = #{record.detectAgencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detectAgencyAddress != null">
+        detect_agency_address = #{record.detectAgencyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detectAgencyIntroduction != null">
+        detect_agency_introduction = #{record.detectAgencyIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detectTime != null">
+        detect_time = #{record.detectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.detectAttachment != null">
+        detect_attachment = #{record.detectAttachment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delFlag != null">
+        del_flag = #{record.delFlag,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createBy != null">
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateBy != null">
+        update_by = #{record.updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updater != null">
+        updater = #{record.updater,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_china_tripartite_detect
+    set tripartite_id = #{record.tripartiteId,jdbcType=BIGINT},
+      product_id = #{record.productId,jdbcType=BIGINT},
+      batch_no = #{record.batchNo,jdbcType=VARCHAR},
+      detect_agency_name = #{record.detectAgencyName,jdbcType=VARCHAR},
+      detect_agency_address = #{record.detectAgencyAddress,jdbcType=VARCHAR},
+      detect_agency_introduction = #{record.detectAgencyIntroduction,jdbcType=VARCHAR},
+      detect_time = #{record.detectTime,jdbcType=TIMESTAMP},
+      detect_attachment = #{record.detectAttachment,jdbcType=VARCHAR},
+      del_flag = #{record.delFlag,jdbcType=BIT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_by = #{record.createBy,jdbcType=VARCHAR},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_by = #{record.updateBy,jdbcType=VARCHAR},
+      updater = #{record.updater,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.frank.core.entity.ChinaTripartiteDetect">
+    update tb_china_tripartite_detect
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="batchNo != null">
+        batch_no = #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="detectAgencyName != null">
+        detect_agency_name = #{detectAgencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="detectAgencyAddress != null">
+        detect_agency_address = #{detectAgencyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="detectAgencyIntroduction != null">
+        detect_agency_introduction = #{detectAgencyIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="detectTime != null">
+        detect_time = #{detectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detectAttachment != null">
+        detect_attachment = #{detectAttachment,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updater != null">
+        updater = #{updater,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tripartite_id = #{tripartiteId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.frank.core.entity.ChinaTripartiteDetect">
+    update tb_china_tripartite_detect
+    set product_id = #{productId,jdbcType=BIGINT},
+      batch_no = #{batchNo,jdbcType=VARCHAR},
+      detect_agency_name = #{detectAgencyName,jdbcType=VARCHAR},
+      detect_agency_address = #{detectAgencyAddress,jdbcType=VARCHAR},
+      detect_agency_introduction = #{detectAgencyIntroduction,jdbcType=VARCHAR},
+      detect_time = #{detectTime,jdbcType=TIMESTAMP},
+      detect_attachment = #{detectAttachment,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      updater = #{updater,jdbcType=VARCHAR}
+    where tripartite_id = #{tripartiteId,jdbcType=BIGINT}
+  </update>
+</mapper>

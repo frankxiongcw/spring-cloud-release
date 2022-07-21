@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+        <plugin type="com.frank.core.config.MySQLGeneratorPrimaryKeyPlugin"/>
+        <!-- 去除自动生成的注释 -->
+        <!-- <commentGenerator>
+             <property name="suppressAllComments" value="true"/>
+         </commentGenerator>-->
+
+        <!--自定义生成注释，用于生成vo的@ApiModel注解，在MyCommentGenerator中配置-->
+        <commentGenerator type= "com.frank.core.config.MyCommentGenerator">
+        </commentGenerator>
+
+        <!-- 生发环境数据库配置:修改配置 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://118.178.86.153:3306/starpick?nullCatalogMeansCurrent=true&amp;useSSL=false&amp;serverTimezone=GMT%2B8"
+                        userId="root" password="@Ing803qq">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+            <!-- This property is used to specify whether MyBatis Generator should force the use of JSR-310 data types for DATE, TIME,
+            and TIMESTAMP fields, rather than using java.util.Date -->
+            <!-- <property name="useJSR310Types" value="true"/>-->
+        </javaTypeResolver>
+        <!--        targetProject请使用绝对路径-->
+        <javaModelGenerator targetPackage="com.frank.core.entity"
+                            targetProject="D:\1.xiongcw.code\spring-cloud-release\spring-cloud-service-core\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="com.frank.core.dao.base"
+                         targetProject="D:\1.xiongcw.code\spring-cloud-release\spring-cloud-service-core\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.frank.core.dao.base"
+                             targetProject="D:\1.xiongcw.code\spring-cloud-release\spring-cloud-service-core\src\main\java">
+
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <!--        <javaModelGenerator targetPackage="com.aoraki.starpicking.entity"-->
+        <!--                            targetProject="D:\xiongcw.code\outsource\starpicking\src\main\java">-->
+        <!--            <property name="enableSubPackages" value="true"/>-->
+
+        <!--            <property name="trimStrings" value="true"/>-->
+        <!--        </javaModelGenerator>-->
+        <!--        <sqlMapGenerator targetPackage="com.aoraki.starpicking.dao.base"-->
+        <!--                         targetProject="D:\xiongcw.code\outsource\starpicking\src\main\resources">-->
+        <!--            <property name="enableSubPackages" value="true"/>-->
+        <!--        </sqlMapGenerator>-->
+        <!--        <javaClientGenerator type="XMLMAPPER" targetPackage="com.aoraki.starpicking.dao.base"-->
+        <!--                             targetProject="D:\xiongcw.code\outsource\starpicking\src\main\java">-->
+
+        <!--            <property name="enableSubPackages" value="true"/>-->
+        <!--        </javaClientGenerator>-->
+
+
+        <table tableName="tb_advisory" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="Advisory">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_background" enableCountByExample="true"
+               enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true"
+               enableInsert="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true" domainObjectName="Background">
+            <property name="useActualColumnNames" value="false"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_banner" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="Banner">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_foretaste_apply" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ForetasteApply">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_member_user_info" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="MemberUserInfo">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_product" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="Product">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_product_evaluation" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ProductEvaluation">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_product_factory" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ProductFactory">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_product_foretaste" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ProductForetaste">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_product_formula" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ProductFormula">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_product_formula_detail" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ProductFormulaDetail">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+                <table tableName="tb_product_ingredient" enableCountByExample="true"
+                       enableUpdateByExample="true" enableDeleteByExample="true"
+                       enableSelectByExample="true" selectByExampleQueryId="true"
+                       enableInsert="true" enableUpdateByPrimaryKey="true"
+                       enableDeleteByPrimaryKey="true" domainObjectName="ProductIngredient">
+                    <property name="useActualColumnNames" value="false"/>
+                    <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+                </table>
+
+        <table tableName="tb_product_order" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ProductOrder">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_product_supplier" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ProductSupplier">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_system_user_info" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="SystemUserInfo">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_wx_user_info" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="WxUserInfo">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_product_factory_rel" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ProductFactoryRel">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_product_supplier_rel" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ProductSupplierRel">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_china_tripartite_detect" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ChinaTripartiteDetect">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_import_clearance_info" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ImportClearanceInfo">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_offshore_detect_organization" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="OffshoreDetectOrganization">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+                <table tableName="tb_offshore_plant" enableCountByExample="true"
+                       enableUpdateByExample="true" enableDeleteByExample="true"
+                       enableSelectByExample="true" selectByExampleQueryId="true"
+                       enableInsert="true" enableUpdateByPrimaryKey="true"
+                       enableDeleteByPrimaryKey="true" domainObjectName="OffshorePlant">
+                    <property name="useActualColumnNames" value="false"/>
+                    <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+                </table>
+
+        <table tableName="tb_port_regulatory" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="PortRegulatory">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table tableName="tb_product_detail" enableCountByExample="true"
+        enableUpdateByExample="true" enableDeleteByExample="true"
+        enableSelectByExample="true" selectByExampleQueryId="true"
+        enableInsert="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" domainObjectName="ProductDetail">
+        <property name="useActualColumnNames" value="false"/>
+        <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+                <table tableName="tb_product_origin_code" enableCountByExample="true"
+                enableUpdateByExample="true" enableDeleteByExample="true"
+                enableSelectByExample="true" selectByExampleQueryId="true"
+                enableInsert="true" enableUpdateByPrimaryKey="true"
+                enableDeleteByPrimaryKey="true" domainObjectName="ProductOriginCode">
+                <property name="useActualColumnNames" value="false"/>
+                <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+                </table>
+
+
+    </context>
+</generatorConfiguration>

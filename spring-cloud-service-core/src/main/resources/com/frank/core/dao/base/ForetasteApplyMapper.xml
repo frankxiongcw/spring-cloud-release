@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.frank.core.dao.base.ForetasteApplyMapper">
+  <resultMap id="BaseResultMap" type="com.frank.core.entity.ForetasteApply">
+    <id column="apply_id" jdbcType="BIGINT" property="applyId" />
+    <result column="foretaste_id" jdbcType="BIGINT" property="foretasteId" />
+    <result column="cat_breed" jdbcType="VARCHAR" property="catBreed" />
+    <result column="cat_age" jdbcType="INTEGER" property="catAge" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="recipienter_name" jdbcType="VARCHAR" property="recipienterName" />
+    <result column="recipienter_phone" jdbcType="VARCHAR" property="recipienterPhone" />
+    <result column="recipienter_province" jdbcType="VARCHAR" property="recipienterProvince" />
+    <result column="recipienter_city" jdbcType="VARCHAR" property="recipienterCity" />
+    <result column="recipienter_area" jdbcType="VARCHAR" property="recipienterArea" />
+    <result column="recipienter_street" jdbcType="VARCHAR" property="recipienterStreet" />
+    <result column="recipienter_detail_address" jdbcType="VARCHAR" property="recipienterDetailAddress" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="updater" jdbcType="VARCHAR" property="updater" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    apply_id, foretaste_id, cat_breed, cat_age, open_id, recipienter_name, recipienter_phone, 
+    recipienter_province, recipienter_city, recipienter_area, recipienter_street, recipienter_detail_address, 
+    status, del_flag, create_time, create_by, creator, update_time, update_by, updater
+  </sql>
+  <select id="selectByExample" parameterType="com.frank.core.entity.ForetasteApplyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tb_foretaste_apply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_foretaste_apply
+    where apply_id = #{applyId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_foretaste_apply
+    where apply_id = #{applyId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.frank.core.entity.ForetasteApplyExample">
+    delete from tb_foretaste_apply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyProperty="applyId" parameterType="com.frank.core.entity.ForetasteApply" useGeneratedKeys="true">
+    insert into tb_foretaste_apply (apply_id, foretaste_id, cat_breed, 
+      cat_age, open_id, recipienter_name, 
+      recipienter_phone, recipienter_province, 
+      recipienter_city, recipienter_area, recipienter_street, 
+      recipienter_detail_address, status, del_flag, 
+      create_time, create_by, creator, 
+      update_time, update_by, updater
+      )
+    values (#{applyId,jdbcType=BIGINT}, #{foretasteId,jdbcType=BIGINT}, #{catBreed,jdbcType=VARCHAR}, 
+      #{catAge,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, #{recipienterName,jdbcType=VARCHAR}, 
+      #{recipienterPhone,jdbcType=VARCHAR}, #{recipienterProvince,jdbcType=VARCHAR}, 
+      #{recipienterCity,jdbcType=VARCHAR}, #{recipienterArea,jdbcType=VARCHAR}, #{recipienterStreet,jdbcType=VARCHAR}, 
+      #{recipienterDetailAddress,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{delFlag,jdbcType=BIT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updater,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyProperty="applyId" parameterType="com.frank.core.entity.ForetasteApply" useGeneratedKeys="true">
+    insert into tb_foretaste_apply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="applyId != null">
+        apply_id,
+      </if>
+      <if test="foretasteId != null">
+        foretaste_id,
+      </if>
+      <if test="catBreed != null">
+        cat_breed,
+      </if>
+      <if test="catAge != null">
+        cat_age,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="recipienterName != null">
+        recipienter_name,
+      </if>
+      <if test="recipienterPhone != null">
+        recipienter_phone,
+      </if>
+      <if test="recipienterProvince != null">
+        recipienter_province,
+      </if>
+      <if test="recipienterCity != null">
+        recipienter_city,
+      </if>
+      <if test="recipienterArea != null">
+        recipienter_area,
+      </if>
+      <if test="recipienterStreet != null">
+        recipienter_street,
+      </if>
+      <if test="recipienterDetailAddress != null">
+        recipienter_detail_address,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updater != null">
+        updater,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="applyId != null">
+        #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="foretasteId != null">
+        #{foretasteId,jdbcType=BIGINT},
+      </if>
+      <if test="catBreed != null">
+        #{catBreed,jdbcType=VARCHAR},
+      </if>
+      <if test="catAge != null">
+        #{catAge,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterName != null">
+        #{recipienterName,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterPhone != null">
+        #{recipienterPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterProvince != null">
+        #{recipienterProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterCity != null">
+        #{recipienterCity,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterArea != null">
+        #{recipienterArea,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterStreet != null">
+        #{recipienterStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterDetailAddress != null">
+        #{recipienterDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updater != null">
+        #{updater,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.frank.core.entity.ForetasteApplyExample" resultType="java.lang.Long">
+    select count(*) from tb_foretaste_apply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_foretaste_apply
+    <set>
+      <if test="record.applyId != null">
+        apply_id = #{record.applyId,jdbcType=BIGINT},
+      </if>
+      <if test="record.foretasteId != null">
+        foretaste_id = #{record.foretasteId,jdbcType=BIGINT},
+      </if>
+      <if test="record.catBreed != null">
+        cat_breed = #{record.catBreed,jdbcType=VARCHAR},
+      </if>
+      <if test="record.catAge != null">
+        cat_age = #{record.catAge,jdbcType=INTEGER},
+      </if>
+      <if test="record.openId != null">
+        open_id = #{record.openId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipienterName != null">
+        recipienter_name = #{record.recipienterName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipienterPhone != null">
+        recipienter_phone = #{record.recipienterPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipienterProvince != null">
+        recipienter_province = #{record.recipienterProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipienterCity != null">
+        recipienter_city = #{record.recipienterCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipienterArea != null">
+        recipienter_area = #{record.recipienterArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipienterStreet != null">
+        recipienter_street = #{record.recipienterStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipienterDetailAddress != null">
+        recipienter_detail_address = #{record.recipienterDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.delFlag != null">
+        del_flag = #{record.delFlag,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createBy != null">
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateBy != null">
+        update_by = #{record.updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updater != null">
+        updater = #{record.updater,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_foretaste_apply
+    set apply_id = #{record.applyId,jdbcType=BIGINT},
+      foretaste_id = #{record.foretasteId,jdbcType=BIGINT},
+      cat_breed = #{record.catBreed,jdbcType=VARCHAR},
+      cat_age = #{record.catAge,jdbcType=INTEGER},
+      open_id = #{record.openId,jdbcType=VARCHAR},
+      recipienter_name = #{record.recipienterName,jdbcType=VARCHAR},
+      recipienter_phone = #{record.recipienterPhone,jdbcType=VARCHAR},
+      recipienter_province = #{record.recipienterProvince,jdbcType=VARCHAR},
+      recipienter_city = #{record.recipienterCity,jdbcType=VARCHAR},
+      recipienter_area = #{record.recipienterArea,jdbcType=VARCHAR},
+      recipienter_street = #{record.recipienterStreet,jdbcType=VARCHAR},
+      recipienter_detail_address = #{record.recipienterDetailAddress,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=TINYINT},
+      del_flag = #{record.delFlag,jdbcType=BIT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_by = #{record.createBy,jdbcType=VARCHAR},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_by = #{record.updateBy,jdbcType=VARCHAR},
+      updater = #{record.updater,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.frank.core.entity.ForetasteApply">
+    update tb_foretaste_apply
+    <set>
+      <if test="foretasteId != null">
+        foretaste_id = #{foretasteId,jdbcType=BIGINT},
+      </if>
+      <if test="catBreed != null">
+        cat_breed = #{catBreed,jdbcType=VARCHAR},
+      </if>
+      <if test="catAge != null">
+        cat_age = #{catAge,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterName != null">
+        recipienter_name = #{recipienterName,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterPhone != null">
+        recipienter_phone = #{recipienterPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterProvince != null">
+        recipienter_province = #{recipienterProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterCity != null">
+        recipienter_city = #{recipienterCity,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterArea != null">
+        recipienter_area = #{recipienterArea,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterStreet != null">
+        recipienter_street = #{recipienterStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="recipienterDetailAddress != null">
+        recipienter_detail_address = #{recipienterDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updater != null">
+        updater = #{updater,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where apply_id = #{applyId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.frank.core.entity.ForetasteApply">
+    update tb_foretaste_apply
+    set foretaste_id = #{foretasteId,jdbcType=BIGINT},
+      cat_breed = #{catBreed,jdbcType=VARCHAR},
+      cat_age = #{catAge,jdbcType=INTEGER},
+      open_id = #{openId,jdbcType=VARCHAR},
+      recipienter_name = #{recipienterName,jdbcType=VARCHAR},
+      recipienter_phone = #{recipienterPhone,jdbcType=VARCHAR},
+      recipienter_province = #{recipienterProvince,jdbcType=VARCHAR},
+      recipienter_city = #{recipienterCity,jdbcType=VARCHAR},
+      recipienter_area = #{recipienterArea,jdbcType=VARCHAR},
+      recipienter_street = #{recipienterStreet,jdbcType=VARCHAR},
+      recipienter_detail_address = #{recipienterDetailAddress,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      del_flag = #{delFlag,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      updater = #{updater,jdbcType=VARCHAR}
+    where apply_id = #{applyId,jdbcType=BIGINT}
+  </update>
+</mapper>

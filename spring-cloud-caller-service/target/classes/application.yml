@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      # 指定当前Client所要连接的eureka Server
+      defaultZone: http://localhost:8100/eureka
+  #      defaultZone: http://eureka8100.com:8100/eureka,http://eureka8200.com:8200/eureka,http://eureka8300.com:8300/eureka
+  instance:
+    instance-id: spring-cloud-caller-8080
+    # 设置当前Client每1秒向Server发送一次心跳，单位秒
+    lease-renewal-interval-in-seconds: 1
+    # 指定让Server认定当前Client已经失效的时间，将来可以从注册表中剔除了，单位秒
+    lease-expiration-duration-in-seconds: 3
+spring:
+  application:
+    name: spring-cloud-caller-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://118.178.86.153:3306/starpick?useUnicode=true&characterEncoding=UTF-8&useSSL=true&autoReconnect=true
+    username: root
+    password: "@Ing803qq"
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000   # 指定Feign客户端连接提供者的超时时限
+        readTimeout: 5000      # 指定Feign客户端连接上提供者后，向提供者进行提交请求，从提交时刻开始，到接收到响应，这个时段的超时时限
+
+info:
+  version: 1.0
+  app.auth: frank
+  app.name: caller
+  company.name: www.google.com
+  company.addr: 昆山花桥
