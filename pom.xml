@@ -20,6 +20,7 @@
         <module>spring-cloud-service-core</module>
         <module>spring-cloud-api</module>
         <module>spring-cloud-eureka-service</module>
+        <module>spring-cloud-zuul-service</module>
     </modules>
 
 
