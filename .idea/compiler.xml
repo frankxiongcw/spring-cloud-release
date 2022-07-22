@@ -12,6 +12,7 @@
         <module name="spring-cloud-eureka-service" />
         <module name="spring-cloud-provider-service" />
         <module name="spring-cloud-service-core" />
+        <module name="spring-cloud-zuul-service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -22,6 +23,7 @@
       <module name="spring-cloud-eureka-service" options="-parameters" />
       <module name="spring-cloud-provider-service" options="-parameters" />
       <module name="spring-cloud-service-core" options="-parameters" />
+      <module name="spring-cloud-zuul-service" options="-parameters" />
     </option>
   </component>
 </project>

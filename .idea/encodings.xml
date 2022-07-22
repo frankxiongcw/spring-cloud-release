@@ -7,5 +7,6 @@
     <file url="file://$PROJECT_DIR$/spring-cloud-eureka-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud-provider-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud-service-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-cloud-zuul-service" charset="UTF-8" />
   </component>
 </project>
