@@ -5,7 +5,7 @@ eureka:
   client:
     service-url:
       # 指定当前Client所要连接的eureka Server
-      defaultZone: http://localhost:8100/eureka
+      defaultZone: http://localhost:8100/eureka,http://localhost:8200/eureka
   #      defaultZone: http://eureka8100.com:8100/eureka,http://eureka8200.com:8200/eureka,http://eureka8300.com:8300/eureka
   instance:
     instance-id: spring-cloud-caller-8080
@@ -28,7 +28,8 @@ feign:
       default:
         connectTimeout: 5000   # 指定Feign客户端连接提供者的超时时限
         readTimeout: 5000      # 指定Feign客户端连接上提供者后，向提供者进行提交请求，从提交时刻开始，到接收到响应，这个时段的超时时限
-
+  hystrix:
+    enabled: true
 info:
   version: 1.0
   app.auth: frank

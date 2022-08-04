@@ -2,9 +2,11 @@ package com.frank.caller.controller;
 
 import com.frank.caller.feign.ProductServiceFeign;
 import com.frank.core.entity.Product;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -15,7 +17,7 @@ import java.util.List;
 @RequestMapping(value = "/caller/product")
 public class ProductController {
 
-    @Autowired
+    @Resource
     private ProductServiceFeign productServiceFeign;
 
     @GetMapping(value = "list")
@@ -27,6 +29,7 @@ public class ProductController {
     public Product getProductById(@PathVariable Long productId){
         return productServiceFeign.getProductById(productId);
     }
+
 
     @PostMapping(value = "save")
     public Boolean saveProduct(@RequestBody Product product){

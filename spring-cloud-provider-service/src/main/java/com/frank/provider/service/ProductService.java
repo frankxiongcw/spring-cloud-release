@@ -24,6 +24,11 @@ public class ProductService {
     }
 
     public Product getProductById(Long productId){
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return productMapper.selectByPrimaryKey(productId);
     }
 

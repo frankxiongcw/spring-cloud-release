@@ -1,5 +1,6 @@
 package com.frank.caller.feign;
 
+import com.frank.caller.feign.fallback.ProductServiceFallback;
 import com.frank.core.entity.Product;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +11,7 @@ import java.util.List;
  * @author xiong.canwei
  * @date 2022年07月21日 16:42
  */
-@FeignClient(name="spring-cloud-provider-service")
+@FeignClient(name="spring-cloud-provider-service",fallback = ProductServiceFallback.class)
 @RequestMapping("/product/")
 public interface ProductServiceFeign {
 
