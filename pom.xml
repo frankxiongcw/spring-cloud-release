@@ -9,6 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+    </properties>
+
     <groupId>com.frank</groupId>
     <artifactId>spring-cloud-release</artifactId>
     <packaging>pom</packaging>
@@ -21,6 +26,7 @@
         <module>spring-cloud-api</module>
         <module>spring-cloud-eureka-service</module>
         <module>spring-cloud-zuul-service</module>
+        <module>spring-cloud-gateway-service</module>
     </modules>
 
 

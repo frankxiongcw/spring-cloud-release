@@ -1,0 +1,32 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: spring-cloud-gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: spring-cloud-caller-service
+          uri: lb://spring-cloud-caller-service
+          predicates:
+            - Path=/caller-c/**
+          filters:
+            - StripPrefix=1
+        - id: spring-cloud-provider-service
+          uri: lb://spring-cloud-caller-service
+          predicates:
+            - Path=/provider-b/**
+          filters:
+            - StripPrefix=1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka
+  instance:
+    hostname: spring-cloud-gateway-9000
+    instance-id: spring-cloud-gateway-9000
+
+ribbon:  #设置ribbon的超时时间小于zuul的超时时间
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
